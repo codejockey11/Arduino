@@ -187,11 +187,11 @@ Device::Device(FrameTime* ft, int n, uint32_t d)
 	this->runTimer.reloadTime = this->duration;
 	this->runTimer.totalTime  = 0;
 
+	this->state = Device::idle;	
+
 	pinMode(this->number, OUTPUT);
 
 	digitalWrite(this->number, LOW);
-
-	this->state = Device::idle;
 }
 
 void Device::Start()
@@ -258,42 +258,42 @@ char* Device::GetStateName()
 	switch (this->state)
 	{
 		case  Device::idle:
-		{
-			return "idle";
+		{	
+			strcpy(strState, "Idle");
 
 			break;
 		}
 
 		case  Device::start:
 		{
-			return "start";
+			strcpy(strState, "Start");
 
 			break;
 		}
 
 		case  Device::running:
 		{
-			return "run";
+			strcpy(strState, "Run");
 
 			break;
 		}
 
 		case Device::ended:
 		{
-			return "ended";
+			strcpy(strState, "Ended");
 
 			break;
 		}
 
 		case  Device::stop:
 		{
-			return "stop";
+			strcpy(strState, "Stop");
 
 			break;
 		}
 	}
 
-	return "";
+	return strState;
 }
 
 AnalogSensor::AnalogSensor(int p, double Vin, double r1, double ss)

@@ -131,6 +131,10 @@ class Device
 	int Update();
 	
 	char* GetStateName();
+	
+	private:
+	
+	char strState[6];
 };
 
 class AnalogSensor
