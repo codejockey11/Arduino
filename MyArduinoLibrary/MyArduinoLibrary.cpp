@@ -411,7 +411,6 @@ double AnalogPin::ReadState()
 	this->value = (double)analogRead(this->pin) * this->multiplier;
 
 	return this->value;
-
 }
 
 int AnalogPin::ReadStateNoMultiplier()
@@ -419,7 +418,6 @@ int AnalogPin::ReadStateNoMultiplier()
 	this->value = (double)analogRead(this->pin);
 
 	return (int)this->value;
-
 }
 
 // Calculate resistance
@@ -430,7 +428,6 @@ double Resistance::GetOhms(double senderVoltage)
 	this->resistance = (senderVoltage * this->resistorIn) / (this->voltageIn - senderVoltage);
 
 	return this->resistance;
-
 }
 
 void I2CNetwork::Init()
@@ -454,7 +451,6 @@ void I2CNetwork::Init()
 
 	// enable twi module, ack, and twi interrupt
 	TWCR = _BV(TWEN) | _BV(TWIE) | _BV(TWEA);
-
 }
 
 uint8_t I2CNetwork::RxRead(uint8_t address, uint8_t* data, uint8_t length, uint8_t ss)
@@ -551,7 +547,6 @@ uint8_t I2CNetwork::RxRead(uint8_t address, uint8_t* data, uint8_t length, uint8
 	}
 
 	return 1;
-
 }
 
 uint8_t I2CNetwork::TxWrite(uint8_t address, uint8_t* data, uint8_t length, uint8_t wait, uint8_t ss)
@@ -648,7 +643,6 @@ uint8_t I2CNetwork::TxWrite(uint8_t address, uint8_t* data, uint8_t length, uint
 	}
 
 	return 1;
-
 }
 
 void I2CNetwork::TimeoutReset()
@@ -665,7 +659,6 @@ void I2CNetwork::TimeoutReset()
 	// reapply the previous register values
 	TWAR = previous_TWAR;
 	TWBR = previous_TWBR;
-
 }
 
 // disable twi module, ack, and twi interrupt
@@ -676,7 +669,6 @@ void I2CNetwork::Disable()
 	// deactivate
 	SDA.SetLow();
 	SCL.SetLow();
-
 }
 
 // Transmit master read ready signal, with or without ack
@@ -690,7 +682,6 @@ void I2CNetwork::Reply(uint8_t ack)
 	{
 		TWCR = _BV(TWEN) | _BV(TWIE) | _BV(TWINT);
 	}
-
 }
 
 // Send stop condition
@@ -727,14 +718,12 @@ void I2CNetwork::Stop()
 
 	// update twi state
 	this->state = I2CNetwork::READY;
-
 }
 
 void I2CNetwork::ReleaseBus()
 {
 	// release bus
 	TWCR = _BV(TWEN) | _BV(TWIE) | _BV(TWEA) | _BV(TWINT);
-
 }
 
 // The lower 3 bits of TWSR are reserved on the ATmega163.
@@ -1019,7 +1008,6 @@ void I2CNetwork::CheckISR()
 			break;
 		}
 	}
-
 }
 
 // Default 4x4 Numeric Keypad
@@ -1044,7 +1032,6 @@ NumPad::NumPad()
 	{
 		this->colPins[c].Init(c, OUTPUT);
 	}
-
 }
 
 NumPad::NumPad(uint8_t r, uint8_t c, char* km, int* rp, int* cp)
@@ -1067,7 +1054,6 @@ NumPad::NumPad(uint8_t r, uint8_t c, char* km, int* rp, int* cp)
 	{
 		this->colPins[col].Init(cp[col], OUTPUT);
 	}
-
 }
 
 char NumPad::GetKey()
@@ -1113,7 +1099,6 @@ char NumPad::GetKey()
 	}
 
 	return this->key;
-
 }
 
 MyString::MyString(char* c)
@@ -1128,7 +1113,6 @@ MyString::MyString(char* c)
 	}
 
 	memcpy(this->value, c, this->size);
-
 }
 
 void MyString::DoubleFloatToStr(double d, uint8_t precision)
@@ -1136,5 +1120,4 @@ void MyString::DoubleFloatToStr(double d, uint8_t precision)
 	memset(this, 0x00, sizeof(MyString));
 
 	dtostrf(d, this->size, precision, this->value);
-
 }
