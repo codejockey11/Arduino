@@ -197,7 +197,6 @@ class Storage
 	uint16_t maxSize;
 
 	uint16_t length;
-
 };
 
 class AnalogPin
@@ -220,7 +219,6 @@ class AnalogPin
 	private:
 
 	double multiplier;
-
 };
 
 class DigitalPin
@@ -245,7 +243,6 @@ class DigitalPin
 	void SetOutput() {this->value = OUTPUT; digitalWrite(this->pin, this->value);}
 
 	void SetPullup() {this->value = INPUT_PULLUP; digitalWrite(this->pin, this->value);}
-
 };
 
 class Resistance
@@ -262,7 +259,6 @@ class Resistance
 	Resistance(double vi, double ri) {this->resistance = 0, this->voltageIn = vi; this->resistorIn = ri;}
 
 	double GetOhms(double sv);
-
 };
 
 // TWI Interface Object
@@ -388,7 +384,6 @@ class I2CNetwork
 			NO_ERROR				= 0xFF
 		};
 	};
-
 };
 
 class NumPad
@@ -417,7 +412,6 @@ class NumPad
 	NumPad(uint8_t r, uint8_t c, char* km, int* rp, int* cp);
 
 	char GetKey();
-
 };
 
 class MyString
@@ -454,6 +448,5 @@ class MyString
 			this->size++;
 		}
 	}
-
 };
 #endif
