@@ -1,0 +1,15 @@
+BODLEVEL = 2V7
+RSTDISBL = [ ]
+DWEN = [ ]
+SPIEN = [X]
+WDTON = [ ]
+EESAVE = [ ]
+BOOTSZ = 256W_3F00
+BOOTRST = [X]
+CKDIV8 = [ ]
+CKOUT = [ ]
+SUT_CKSEL = Select Clock Speed
+
+EXTENDED = 0x05
+HIGH = 0xDE
+LOW = 0xFF
