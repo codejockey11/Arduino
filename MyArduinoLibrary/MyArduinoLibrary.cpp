@@ -392,7 +392,7 @@ void Storage::StoreSettings(void)
 
 void Storage::ReadSettings(void)
 {
-	this->tempAddr = settings;
+	this->tempAddr = this->settings;
 
 	eeprom_busy_wait();
 
